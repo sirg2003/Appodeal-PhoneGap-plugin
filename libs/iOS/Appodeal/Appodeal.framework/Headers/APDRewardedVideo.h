@@ -2,7 +2,7 @@
 //  APDReviewVideo.h
 //  Appodeal
 //
-//  AppodealSDK version 2.0.0-All
+//  AppodealSDK version 2.1.0-ReleaseCandidate-5
 //
 //  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //
@@ -13,8 +13,11 @@
 #import <Appodeal/APDSdk.h>
 #import <Appodeal/APDRewardProtocol.h>
 
-@class APDRewardedVideo;
+#ifdef ADVANCED_INTEGRATION
+#import <Appodeal/AppodealRequestDelegateProtocol.h>
+#endif
 
+@class APDRewardedVideo;
 
 /*!
  *  Declaration of rewarded video delegate
@@ -91,6 +94,10 @@
  }
  */
 @interface APDRewardedVideo : NSObject
+
+#ifdef ADVANCED_INTEGRATION
+@property (weak, nonatomic) id<APDRewardedVideoRequestDelegate> requestDelegate;
+#endif
 
 /*!
  *  Set delegate to skippable video

@@ -2,7 +2,7 @@
 //  APDSkippableVideo.h
 //  Appodeal
 //
-//  AppodealSDK version 2.0.0-All
+//  AppodealSDK version 2.1.0-ReleaseCandidate-5
 //
 //  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //

@@ -2,7 +2,7 @@
 //  APDNativeAdQueue.h
 //  Appodeal
 //
-//  AppodealSDK version 2.0.0-All
+//  AppodealSDK version 2.1.0-ReleaseCandidate-5
 //
 //  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //
@@ -19,8 +19,21 @@
 
 @optional
 
+/**
+ Method called when loader recieve native ad.
+
+ @param adQueue ad queue object
+ @param count count of avalable native ad
+ */
 - (void)adQueueAdIsAvailable:(APDNativeAdQueue *)adQueue ofCount:(NSInteger)count;
 
+
+/**
+ Method called when loader fail recieve native ad.
+
+ @param adQueue ad queue object
+ @param error occured error
+ */
 - (void)adQueue:(APDNativeAdQueue *)adQueue failedWithError:(NSError *)error;
 
 @end
@@ -28,13 +41,40 @@
 
 @interface APDNativeAdQueue : NSObject
 
+/*!
+ *  Set loader delegate
+ */
 @property (nonatomic, weak) id<APDNativeAdQueueDelegate> delegate;
+
+
+/**
+ * get count of avalable native ad
+ */
 @property (nonatomic, readonly, assign) NSInteger currentAdCount;
 
+
+/**
+ set max count native ad
+
+ @param adSize max count of native ad
+ */
 - (void)setMaxAdSize:(NSInteger)adSize;
 
+
+/**
+ * Call this method to load native ad.
+
+ @param type APDNativeAdTypeAuto or APDNativeAdTypeVideo or APDNativeAdTypeNoVideo
+ */
 - (void)loadAdOfType:(APDNativeAdType)type;
 
+
+/**
+ Call this method to get native ads
+
+ @param count count avalable native ad
+ @return array of native ad
+ */
 - (NSArray <__kindof APDNativeAd *> *)getNativeAdsOfCount:(NSInteger)count;
 
 

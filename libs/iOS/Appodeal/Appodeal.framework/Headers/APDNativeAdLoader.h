@@ -2,7 +2,7 @@
 //  APDNativeAdLoader.h
 //  Appodeal
 //
-//  AppodealSDK version 2.0.0-All
+//  AppodealSDK version 2.1.0-ReleaseCandidate-5
 //
 //  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //
@@ -15,6 +15,17 @@
 
 @class APDNativeAdLoader;
 
+@protocol APDNativeAdRequestDelegate <NSObject>
+
+@optional
+
+- (void)nativeAdLoaderDidStartMediation:(APDNativeAdLoader *)nativeAdLoader;
+- (void)nativeAdLoader:(APDNativeAdLoader *)nativeAdLoader willSendRequestToAdNetwork:(NSString *)adNetwork;
+- (void)nativeAdLoader:(APDNativeAdLoader *)nativeAdLoader didRecieveResponseFromAdNetwork:(NSString *)adNetwork wasFilled:(BOOL)filled;
+- (void)nativeAdLoader:(APDNativeAdLoader *)nativeAdLoader didFinishMediationAdWasFilled:(BOOL)filled;
+
+@end
+
 /*!
  *  Declaration of native ad loader delegate
  */
@@ -24,7 +35,7 @@
  *  Method called when loader recieve native ad.
  *  Count of array can be little than requested capacity
  *
- *  @brief This API will be available in future release
+ *  @discussion This API will be available in future release
  *
  *  @param loader    Ready loader
  *  @param nativeAds Array of native ads of requested type
@@ -53,6 +64,9 @@
  *  You can call -loadAdWithType: or -loadAdWithType:capacity: several times on one loader
  */
 @interface APDNativeAdLoader : NSObject
+
+
+@property (weak, nonatomic) id<APDNativeAdRequestDelegate> requestDelegate;
 
 /*!
  *  Set loader delegate

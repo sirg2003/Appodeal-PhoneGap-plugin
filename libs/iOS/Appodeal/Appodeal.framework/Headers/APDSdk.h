@@ -2,7 +2,7 @@
 //  APDSdk.h
 //  Appodeal
 //
-//  AppodealSDK version 2.0.0-All
+//  AppodealSDK version 2.1.0-ReleaseCandidate-5
 //
 //  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //
@@ -46,12 +46,12 @@
 + (instancetype)new NS_UNAVAILABLE;
 
 /*!
- *  @brief Singleton instance of APDSdk
+ *  Singleton instance of APDSdk
  *
- *  @brief Objective-C
+ *  @discussion Objective-C
  *  @code [APDSdk sharedSdkWithApiKey:@"API_KEY"]; @endcode
  *
- *  @brief Swift
+ *  @discussion Swift
  *  @code APDSdk.sharedSdkWithApiKey("API_KEY") @endcode
  *
  *  @param apiKey String API key parameter from Appodeal Dashboard
@@ -62,12 +62,12 @@
 
 
 /*!
- *  @brief Always returns same instance SDK returned by first call of +sharedSdkWithApiKey:
+ *  Always returns same instance SDK returned by first call of +sharedSdkWithApiKey:
  *
- *  @brief Objective-C
+ *  @discussion Objective-C
  *  @code [APDSdk sharedSdk]; @endcode
  *
- *  @brief Swift
+ *  @discussion Swift
  *  @code APDSdk.sharedSdk() @endcode
  *
  *  @return Instance of APDSdk
@@ -75,12 +75,12 @@
 + (instancetype)sharedSdk;
 
 /*!
- *  @brief Call this method to specify framework before initialization
+ *  Call this method to specify framework before initialization
  *
- *  @brief Objective-C
+ *  @discussion Objective-C
  *  @code [[APDSdk sharedSdk] setFramework:APDFrameworkNative]; @endcode
  *
- *  @brief Swift
+ *  @discussion Swift
  *  @code APDSdk.sharedSdk().setFramework(APDFramework.native) @endcode
  *
  *  @param framework Type of framework. Default is native iOS SDK
@@ -88,19 +88,19 @@
 - (void)setFramework:(APDFramework)framework;
 
 /*!
- *  @brief Call this method to specify framework before initialization
+ *  Call this method to specify framework before initialization
  *  
  *  @param pluginVersion - NSString version plugin
  */
 - (void)setPluginVersion:(NSString *)pluginVersion;
 
 /*!
- *  @brief Initializtion of sdk for types
+ *  Initializtion of sdk for types
  *
- *  @brief Objective-C
+ *  @discussion Objective-C
  *  @code [[APDSdk sharedSdk] initializeForAdTypes:AppodealAdTypeInterstitial | AppodealAdTypeRewardedVideo]; @endcode
  *
- *  @brief Swift
+ *  @discussion Swift
  *  @code 
     let adTypes: AppodealAdType = [.banner, .interstitial]
     APDSdk.sharedSdk().initializeForAdTypes(adTypes) @endcode
@@ -110,12 +110,12 @@
 - (void)initializeForAdTypes:(APDType)adTypes;
 
 /*!
- *  @brief Check that sdk is initialized for ad type
+ *  Check that sdk is initialized for ad type
  *
- *  @brief Objective-C
+ *  @discussion Objective-C
  *  @code [[APDSdk sharedSdk] isInitializedForAdType:AppodealAdTypeInterstitial]; @endcode
  *
- *  @brief Swift
+ *  @discussion Swift
  *  @code APDSdk.sharedSdk().isInitializedForAdType(APDAdType.interstitial) @endcode
  *
  *  @param adType APDAdType value
@@ -125,13 +125,13 @@
 - (BOOL)isInitializedForAdType:(APDType)adType;
 
 /*!
- *  @brief If you set YES to this method you get only
+ *  If you set YES to this method you get only
  *  test ad with 0$ eCPM
- *
- *  @brief Objective-C
+ *  @warning use this method before initilized sdk
+ *  @discussion Objective-C
  *  @code [[APDSdk sharedSdk] setTesingMode:YES]; @endcode
  *
- *  @brief Swift
+ *  @discussion Swift
  *  @code APDSdk.sharedSdk().setTesingMode(true) @endcode
  *
  *  @param enabled Boolean flag
@@ -139,16 +139,16 @@
 - (void)setTesingMode:(BOOL)enabled;
 
 /*!
- *  @brief Set targeting for more satisfying ads
+ *  Set targeting for more satisfying ads
  *
- *  @brief Objective-C
+ *  @discussion Objective-C
  *  @code 
     APDUserInfo * userInfo = [APDUserInfo new];
     userInfo.age = 25;
     [[APDSdk sharedSdk] setUserInfo:userInfo];
  *  @endcode
  *
- *  @brief Swift
+ *  @discussion Swift
  *  @code 
     let userInfo = APDUserInfo()
     userInfo.age = 25
@@ -160,13 +160,13 @@
 - (void)setUserInfo:(APDUserInfo *)userInfo;
 
 /*!
- *  @brief If you does not want to some ad network
- *  @brief get user info call this method
+ *  If you does not want to some ad network
+ *  get user info call this method
  *
- *  @brief Objective-C
+ *  @discussion Objective-C
  *  @code [[APDSdk sharedSdk] disableUserInfoForNetworkName:@"NETWORK_NAME"]; @endcode
  *
- *  @brief Swift
+ *  @discussion Swift
  *  @code APDSdk.sharedSdk().disableUserInfoForNetworkName("NETWORK_NAME") @endcode
  *
  *  @param networkName Appodeal ad network name for example: @"mopub", @"admob"
@@ -174,19 +174,19 @@
 - (void)disableUserInfoForNetworkName:(NSString *)networkName;
 
 /*!
- *  @brief You can set custom rule by usage this method.
+ *  You can set custom rule by usage this method.
  *  Configure rules for segments in <b>Appodeal Dashboard</b>.
  *  @discussion For example, you want to use segment, when user complete 20 or more levels
  *  You create rule in dashboard with name "completedLevels" of type Int,
  *  operator GreaterThanOrEqualTo and value 10, now you implement folowing code:
  *
- *  @brief Objective-C
+ *  @discussion Objective-C
  *  @code 
     NSDictionary * customRule = {@"completedLevels" : CURRENT_NUMBER_OF_COMPLETED_LEVELS};
     [[APDSdk sharedSdk] setCustomRule: customRule];
  *  @endcode
  *
- *  @brief Swift
+ *  @discussion Swift
  *  And then CURRENT_NUMBER_OF_COMPLETED_LEVELS become 10 or greater
  *  You segments settings become available
  *
@@ -213,7 +213,7 @@
 - (void)setLocationTracking:(BOOL)enabled;
 
 /*!
- *  @brief Reset UUID for tracking/targeting ad
+ *  Reset UUID for tracking/targeting ad
  */
 - (void)resetUUID;
 
@@ -228,6 +228,8 @@
 - (void)setMinimumFreeMemoryPercentage:(NSUInteger)percentage
                  observeSystemWarnings:(BOOL)observeSystemWarnings
                              forAdType:(APDType)type;
+
+- (void)setChildDirectedTreatment:(BOOL)childDirectedTreatment;
 
 @end
 

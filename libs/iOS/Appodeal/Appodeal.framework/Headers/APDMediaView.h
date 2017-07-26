@@ -2,7 +2,7 @@
 //  APDMediaView.h
 //  Appodeal
 //
-//  AppodealSDK version 2.0.0-All
+//  AppodealSDK version 2.1.0-ReleaseCandidate-5
 //
 //  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //
@@ -54,7 +54,7 @@ typedef NS_ENUM(NSInteger, APDMediaViewType) {
 - (void)mediaViewFinishPlaying:(APDMediaView *)mediaView videoWasSkipped:(BOOL)wasSkipped;
 
 /*!
- *  @brief Method called when media view present fullscreen
+ *  Method called when media view present fullscreen
  *  If type APDMediaViewTypeIcon -mediaViewStartPlaying: call firstly!
  *  When this method called media view has fullscreen size
  *

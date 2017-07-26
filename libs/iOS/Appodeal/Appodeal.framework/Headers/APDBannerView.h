@@ -2,7 +2,7 @@
 //  APDBannerView.h
 //  Appodeal
 //
-//  AppodealSDK version 2.0.0-All
+//  AppodealSDK version 2.1.0-ReleaseCandidate-5
 //
 //  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //
@@ -10,8 +10,12 @@
 #import <UIKit/UIKit.h>
 #import <Appodeal/APDSdk.h>
 
-@class APDBannerView;
+#ifdef ADVANCED_INTEGRATION
+#import <Appodeal/AppodealRequestDelegateProtocol.h>
+#endif
 
+
+@class APDBannerView;
 /*!
  *  Declaration of banner view delegate
  */
@@ -34,7 +38,7 @@
 - (void)precacheBannerViewDidLoadAd:(APDBannerView *)precacheBannerView __attribute__((deprecated("Use -bannerViewDidLoadAd: instead")));
 
 /*!
- *  Method called after any banner was show
+ *  Method called after any banner was show or refresh
  *
  *  @param bannerView On screen banner view
  */
@@ -49,7 +53,7 @@
 - (void)bannerViewDidRefresh:(APDBannerView *)bannerView __attribute__((deprecated("Use -bannerViewDidShow: instead")));
 
 /*!
- *  Method called if banner view if banner mediation failed
+ *  Method called if banner view mediation failed
  *
  *  @param bannerView Failed banner
  *  @param error      Occured error
@@ -66,8 +70,11 @@
 @end
 
 
-@interface APDBannerView : UIView
+@interface APDBannerView : UIView 
 
+#ifdef ADVANCED_INTEGRATION
+@property (weak, nonatomic) IBOutlet id<APDBannerViewRequestDelegate> requestDelegate;
+#endif
 /*!
  *  Set banner view delegate
  */
@@ -85,6 +92,7 @@
 
 /*!
  *  If this flag set YES banner view will autoresize after screen rotation
+ *  (It is possible to use the flag only if the application supports one orientation)
  *  By default set to NO
  */
 @property (assign, nonatomic) IBInspectable BOOL usesSmartSizing;
@@ -101,12 +109,12 @@
 @property (assign, nonatomic) IBInspectable CGSize adSize;
 
 /*!
- *  @brief Set banner refreshing
+ *  Set banner refreshing animation
  */
 @property (assign, nonatomic) IBInspectable UIViewAnimationOptions refreshAnimation;
 
 /*!
- *  @brief Set banner background visability
+ *  Set banner background visability
  */
 @property (assign, nonatomic) BOOL backgroundVisible;
 
@@ -121,7 +129,7 @@
 @property (assign, nonatomic, readonly, getter=isReady) BOOL ready;
 
 /*!
- *  Iitializator
+ *  Initializator
  *
  *  @param adSize kAPDAdSize320x50, kAPDAdSize728x90
  *

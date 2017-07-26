@@ -2,7 +2,7 @@
 //  APDInterstital.h
 //  Appodeal
 //
-//  AppodealSDK version 2.0.0-All
+//  AppodealSDK version 2.1.0-ReleaseCandidate-5
 //
 //  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //
@@ -10,6 +10,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <Appodeal/APDSdk.h>
+
+#ifdef ADVANCED_INTEGRATION
+#import <Appodeal/AppodealRequestDelegateProtocol.h>
+#endif
 
 @class APDInterstitialAd;
 
@@ -70,7 +74,8 @@
  *  Call when user tap on interstital
  *
  *  @param interstitialAd Shown interstitial
- */- (void)interstitialAdDidRecieveTapAction:(APDInterstitialAd *)interstitialAd;
+ */
+- (void)interstitialAdDidRecieveTapAction:(APDInterstitialAd *)interstitialAd;
 
 @end
 
@@ -87,6 +92,9 @@
  */
 @interface APDInterstitialAd : NSObject
 
+#ifdef ADVANCED_INTEGRATION
+@property (weak, nonatomic) id<APDInterstitalAdRequestDelegate> requestDelegate;
+#endif
 /*!
  *  Set interstitial delegate
  */

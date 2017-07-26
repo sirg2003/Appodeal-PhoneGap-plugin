@@ -1,0 +1,14 @@
+
+framework module InneractiveSDK { 
+  umbrella header "InneractiveAdSDK.h"
+  export * 
+    module * { export * }
+  header "InneractiveAdSDK-Ad.h"
+  header "InneractiveAdSDK-AdConfig.h"
+  header "InneractiveAdSDK-AdDelegate.h"
+  header "InneractiveAdSDK-AdView.h"
+  header "InneractiveAdSDK-GeneralConfig.h"
+  header "InneractiveAdSDK-NativeAd.h"
+  header "InneractiveAdSDK.h"
+  header "InneractiveAdSDK-Bridging-Header.h"
+}

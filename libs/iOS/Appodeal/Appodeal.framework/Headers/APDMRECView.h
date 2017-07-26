@@ -2,7 +2,7 @@
 //  APDMRECView.h
 //  Appodeal
 //
-//  AppodealSDK 2.0.0-All
+//  AppodealSDK 2.1.0-ReleaseCandidate-5
 //
 //  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //
