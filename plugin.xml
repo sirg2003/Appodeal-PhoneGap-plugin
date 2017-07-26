@@ -325,7 +325,7 @@
         <resource-file src="libs/iOS/Adapters/APDTapjoyAdapter.embeddedframework/Tapjoy.framework/Resources/TapjoyResources.bundle"/>
         <!-- MoPub -->
         <source-file src="libs/iOS/Adapters/APDTwitterMoPubAdapter.embeddedframework/libAPDTwitterMoPubAdapter.a" framework="true"/>
-        <framework custom="true" src="libs/iOS/Adapters/APDTwitterMoPubAdapter.embeddedframework/MoPubSDK.framework.framework"/>
+        <framework custom="true" src="libs/iOS/Adapters/APDTwitterMoPubAdapter.embeddedframework/MoPubSDK.framework"/>
         <resource-file src="libs/iOS/Adapters/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseBtn.png"/>
         <resource-file src="libs/iOS/Adapters/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseBtn@2x.png"/>
         <resource-file src="libs/iOS/Adapters/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseBtn@3x.png"/>
