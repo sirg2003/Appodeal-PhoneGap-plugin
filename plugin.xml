@@ -273,6 +273,7 @@
         <framework src="WebKit.framework"/>
         <framework src="CoreBluetooth.framework"/>
         <framework src="GLKit.framework"/>
+        <framework src="ImageIO.framework"/>
 
         <framework src="libc++.dylib"/>
         <framework src="libsqlite3.dylib"/>
